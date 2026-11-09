@@ -1,0 +1,13 @@
+{
+  "name": "rag-system-v1",
+  "type": "retrieval-augmented-generation",
+  "note": "RAG is not trained: the 'model' is the embedding model + FAISS index + LLM below.",
+  "embedding_model": "BAAI/bge-small-en-v1.5",
+  "embedding_dim": 384,
+  "vector_store": "FAISS (IndexFlatIP, L2-normalised = cosine)",
+  "chunk_size": 800,
+  "chunk_overlap": 120,
+  "top_k": 4,
+  "min_score": 0.35,
+  "llm": "mistralai/Mistral-7B-Instruct-v0.3 (Hugging Face Inference API, open-source weights)"
+}
