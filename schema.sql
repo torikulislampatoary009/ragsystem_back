@@ -1,0 +1,4 @@
+-- Optional: tables are created automatically on first request. Run manually if you prefer.
+CREATE TABLE IF NOT EXISTS documents (id INT AUTO_INCREMENT PRIMARY KEY, filename VARCHAR(255) NOT NULL, num_chunks INT NOT NULL DEFAULT 0, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS chunks (id INT AUTO_INCREMENT PRIMARY KEY, document_id INT NOT NULL, chunk_index INT NOT NULL, page INT NULL, content MEDIUMTEXT NOT NULL, embedding MEDIUMBLOB NOT NULL, FOREIGN KEY (document_id) REFERENCES documents(id) ON DELETE CASCADE);
+CREATE TABLE IF NOT EXISTS chat_history (id INT AUTO_INCREMENT PRIMARY KEY, document_id INT NULL, question TEXT NOT NULL, answer MEDIUMTEXT NOT NULL, sources TEXT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
